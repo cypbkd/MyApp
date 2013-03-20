@@ -1,0 +1,174 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:DataManager="using:MyApp.DataManager"
+    x:Class="MyApp.NewOrEditCoursePage"
+    IsTabStop="false"
+    mc:Ignorable="d">
+	<Page.Resources>
+		<DataManager:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+		<Style x:Key="SaveButtonStyle" TargetType="Button">
+			<Setter Property="Background" Value="{StaticResource ButtonBackgroundThemeBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource ButtonForegroundThemeBrush}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource ButtonBorderThemeBrush}"/>
+			<Setter Property="BorderThickness" Value="{StaticResource ButtonBorderThemeThickness}"/>
+			<Setter Property="Padding" Value="12,4,12,4"/>
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="PointerOver">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="#FF999999"/>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FFFFFFFF"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Border x:Name="Border" BorderThickness="{TemplateBinding BorderThickness}" Margin="3" CornerRadius="40" BorderBrush="Black" Background="#FFE2E2E2">
+								<Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50">
+									<Border.Background>
+										<ImageBrush ImageSource="Images/appbar.save.rest.png"/>
+									</Border.Background>
+								</Border>
+							</Border>
+							<Rectangle x:Name="FocusVisualWhite" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
+							<Rectangle x:Name="FocusVisualBlack" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="0.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}" StrokeDashArray="1,1"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="CancleButtonStyle" TargetType="Button">
+			<Setter Property="Background" Value="{StaticResource ButtonBackgroundThemeBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource ButtonForegroundThemeBrush}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource ButtonBorderThemeBrush}"/>
+			<Setter Property="BorderThickness" Value="{StaticResource ButtonBorderThemeThickness}"/>
+			<Setter Property="Padding" Value="12,4,12,4"/>
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="PointerOver">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="#FF999999"/>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FFFFFFFF"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="FocusStates"/>
+							</VisualStateManager.VisualStateGroups>
+							<Border x:Name="Border" BorderThickness="{TemplateBinding BorderThickness}" Margin="3" CornerRadius="40" BorderBrush="Black" Background="#FFE2E2E2">
+								<Border BorderBrush="Black" BorderThickness="0" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50">
+									<Border.Background>
+										<ImageBrush ImageSource="Images/appbar.cancel.rest.png"/>
+									</Border.Background>
+								</Border>
+							</Border>
+							<Rectangle x:Name="FocusVisualWhite" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
+							<Rectangle x:Name="FocusVisualBlack" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="0.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}" StrokeDashArray="1,1"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Page.Resources>
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width=".333*"/>
+    		<ColumnDefinition Width=".667*"/>
+    	</Grid.ColumnDefinitions>
+    	<StackPanel Grid.Column="0" Background="#FF2F6AEA">
+            <TextBlock TextWrapping="Wrap" Text="{Binding Title}" FontSize="{StaticResource TitleFontSize}" Padding="{StaticResource TitlePadding}"/>
+    		<TextBlock TextWrapping="Wrap" Text="课程名" FontSize="{StaticResource ItemFontSize}" Margin="{StaticResource ItemPadding}" FontFamily="Microsoft YaHei"/>
+    		<TextBox x:Name="courseName" TextWrapping="Wrap" FontSize="{StaticResource ItemFontSize}" Margin="{StaticResource ItemMargin}" Text="{Binding Course.Name, Mode=TwoWay}" FontFamily="Microsoft YaHei"/>
+    		<TextBlock TextWrapping="Wrap" Text="代课老师" FontSize="{StaticResource ItemFontSize}" Margin="{StaticResource ItemPadding}" FontFamily="Microsoft YaHei"/>
+            <TextBox x:Name="teacherName" TextWrapping="Wrap" FontSize="{StaticResource ItemFontSize}" Margin="{StaticResource ItemMargin}" Text="{Binding Course.TeacherName, Mode=TwoWay}" FontFamily="Microsoft YaHei"/>
+    		<TextBlock TextWrapping="Wrap" Text="地点" FontSize="{StaticResource ItemFontSize}" Margin="{StaticResource ItemPadding}" FontFamily="Microsoft YaHei"/>
+            <TextBox x:Name="location" TextWrapping="Wrap" FontSize="{StaticResource ItemFontSize}" Margin="{StaticResource ItemMargin}" Text="{Binding Course.Location, Mode=TwoWay}" FontFamily="Microsoft YaHei"/>
+            <StackPanel Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <TextBlock TextWrapping="Wrap" Text="开始周" FontSize="{StaticResource ItemFontSize}" VerticalAlignment="Center" Margin="{StaticResource ItemPadding}" FontFamily="Microsoft YaHei"/>
+                <Slider x:Name="startWeek" Style="{StaticResource mySliderStyle}"  FontSize="{StaticResource ItemFontSize}"  Margin="{StaticResource ItemMargin}" Minimum="1" Maximum="{Binding  ElementName=endWeek, Path=Value, Mode=TwoWay}"/>
+                <TextBlock TextWrapping="Wrap" Text="结束周" FontSize="{StaticResource ItemFontSize}" VerticalAlignment="Center" Margin="{StaticResource ItemPadding}" FontFamily="Microsoft YaHei UI"/>
+                <Slider x:Name="endWeek" Style="{StaticResource mySliderStyle}" FontSize="{StaticResource ItemFontSize}"  Margin="{StaticResource ItemMargin}" Minimum="{Binding  ElementName=startWeek, Path=Value, Mode=TwoWay}" Maximum="{Binding WeekCount}" Value="{Binding WeekCount, Mode=OneTime}" />
+            </StackPanel>
+                <Grid Margin="{StaticResource ItemMargin}" Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}" >
+    			<Grid.ColumnDefinitions>
+    				<ColumnDefinition Width="87*"/>
+    				<ColumnDefinition Width="48*"/>
+    				<ColumnDefinition Width="135*"/>
+    				<ColumnDefinition Width="134*"/>
+    			</Grid.ColumnDefinitions>
+    			<RadioButton x:Name="everyWeek" Content="每周" BorderThickness="0" FontSize="26.667" Grid.ColumnSpan="2" VerticalAlignment="Center" IsChecked="True" FontFamily="Microsoft YaHei UI"/>
+    			<RadioButton x:Name="oddWeek" Content="单周" BorderThickness="0" FontSize="26.667"  Grid.Column="2" VerticalContentAlignment="Top" FontFamily="Microsoft YaHei UI"/>
+    			<RadioButton x:Name="evenWeek" Content="双周" BorderThickness="0" FontSize="26.667"  Grid.Column="3" VerticalAlignment="Center" VerticalContentAlignment="Top" FontFamily="Microsoft YaHei UI"/>
+            </Grid>
+    	</StackPanel>
+    	<StackPanel Grid.Column="1" Background="{StaticResource ApplicationForegroundThemeBrush}">
+    		<StackPanel Margin="50,0,42,0">
+    			<Border BorderBrush="#FF2F6AEA" BorderThickness="0,0,0,1" Margin="0,0,-42,0">
+    				<Grid>
+    					<Grid.ColumnDefinitions>
+    						<ColumnDefinition Width="80*"/>
+    						<ColumnDefinition Width="307*"/>
+    					</Grid.ColumnDefinitions>
+    					<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="备注" Width="196" Foreground="{StaticResource AppBarBackgroundThemeBrush}" FontSize="48" Margin="0,46,0,21" Grid.ColumnSpan="2" FontFamily="Microsoft YaHei"/>
+    					<StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,39,0">
+    						<Button x:Name="saveBtn" HorizontalAlignment="Left" Width="60" Margin="-1,41,0,24" Height="60" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Style="{StaticResource SaveButtonStyle}" Click="SaveButton_Click" />
+    						<Button x:Name="cancleBtn" HorizontalAlignment="Left" Width="60" Margin="24,41,0,24" Height="60" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Style="{StaticResource CancleButtonStyle}" Click="CancleButton_Click" />
+    					</StackPanel>
+    				</Grid>
+    			</Border>
+    			<StackPanel Height="596">
+                    <TextBox x:Name="remark" TextWrapping="Wrap" Text="{Binding Course.Remark,Mode=TwoWay}" Background="#FFE2E2E2" FontSize="26.667" BorderThickness="0" Height="575" Margin="0,20,58,0" AcceptsReturn="True" FontFamily="Microsoft YaHei"/>
+    			</StackPanel>
+    		</StackPanel>
+    	</StackPanel>
+    </Grid>
+    
+    <Page.BottomAppBar>
+        <AppBar Height="90" Background="#FF333333" BorderBrush="#FF333333">
+            <Grid>
+                <StackPanel>
+                    <Button Name="Delete" HorizontalAlignment="Right" Style="{StaticResource DeleteAppBarButtonStyle}" Visibility="{Binding IsCollapsed, Converter={StaticResource BooleanToVisibilityConverter}}" Click="DeleteButton_Click" ToolTipService.ToolTip="删除本节课程"/>
+                </StackPanel>
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
+</Page>

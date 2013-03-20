@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="3cb2e4db-1a62-49de-a313-9721a7d6fdc3" Publisher="CN=sxl" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>MyApp</DisplayName>
+    <PublisherDisplayName>sxl</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.0</OSMinVersion>
+    <OSMaxVersionTested>6.2.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="MyApp.App">
+      <VisualElements DisplayName="课程表" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="MyApp" ForegroundText="light" BackgroundColor="#2e9ae0" ToastCapable="true">
+        <DefaultTile ShowName="allLogos" WideLogo="Assets\LargeLogo.png" />
+        <SplashScreen Image="Assets\SplashScreen.png" />
+        <InitialRotationPreference>
+          <Rotation Preference="landscape" />
+          <Rotation Preference="landscapeFlipped" />
+        </InitialRotationPreference>
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

@@ -1,0 +1,22 @@
+﻿<UserControl
+    x:Class="MyApp.TimePicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="36.06"
+    d:DesignWidth="233.119" VerticalAlignment="Center" HorizontalAlignment="Left">
+    
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <ComboBox x:Name="hour" SelectedIndex="{Binding Value.Hour}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="80" FontSize="24" Height="35"/>
+        <!--SelectionChanged="hour_SelectionChanged"-->
+        
+		<TextBlock HorizontalAlignment="Left" Margin="4,4,10,0" TextWrapping="Wrap" Text="时" VerticalAlignment="Top" Height="35" FontSize="24" Foreground="#FFBBBBBB" RenderTransformOrigin="-1.63300001621246,0.597000002861023"/>
+        <ComboBox x:Name="minite" SelectedIndex="{Binding Value.Minute}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="80"  FontSize="24" Height="35"/>
+            <!--SelectionChanged="minite_SelectionChanged"-->
+		<TextBlock HorizontalAlignment="Left" Margin="4,4,10,0" TextWrapping="Wrap" Text="分" VerticalAlignment="Top" Height="35" FontSize="24" Foreground="#FFBBBBBB"/>
+
+	</StackPanel>
+</UserControl>

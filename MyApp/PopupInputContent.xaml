@@ -1,0 +1,41 @@
+﻿<UserControl
+    x:Class="MyApp.PopupInputContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:DataManager="using:MyApp.DataManager"
+    mc:Ignorable="d"
+    d:DesignHeight="216"
+    d:DesignWidth="362">
+
+    <UserControl.Resources>
+        <DataManager:DateTimeToStringConverter x:Key="DateTimeToStringConverter"/>
+    </UserControl.Resources>
+    <Grid Background="#FF8209C7">
+        <StackPanel Margin="12,12,10,10" DataContext="{Binding}">
+            <TextBlock Text="设置本节课的时间" FontSize="{StaticResource ItemFontSize}" Margin="{StaticResource SettingItemMargin}" />
+            <StackPanel Orientation="Horizontal">
+            	<TextBlock Height="22" TextWrapping="Wrap" Text="开始时间:" VerticalAlignment="Top" Width="99" FontSize="{StaticResource SettingFontSize}" Margin="0,7,0,0"/>
+                <!--<local:TimePicker x:Name="Start" Value="{Binding StartTime,Mode=TwoWay}"/>-->
+                <TextBox x:Name="startTime" Text="{Binding StartTime, Converter={StaticResource DateTimeToStringConverter}, Mode=TwoWay}" ToolTipService.ToolTip="e.g. 8:00" Width="268" Margin="{StaticResource SettingItemMargin}" FontSize="16" />
+                <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" DataContext="{Binding}">
+                    <ComboBox x:Name="hour" SelectedIndex="{Binding StartTime.Hour, Mode=TwoWay}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="80" FontSize="24" Height="35"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="4,4,10,0" TextWrapping="Wrap" Text="时" VerticalAlignment="Top" Height="35" FontSize="24" Foreground="#FFBBBBBB" RenderTransformOrigin="-1.63300001621246,0.597000002861023"/>
+                    <ComboBox x:Name="minite" SelectedIndex="{Binding StartTime.Minute, Mode=TwoWay}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="80"  FontSize="24" Height="35"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="4,4,10,0" TextWrapping="Wrap" Text="分" VerticalAlignment="Top" Height="35" FontSize="24" Foreground="#FFBBBBBB"/>
+                </StackPanel>-->
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+            	<TextBlock Height="22" TextWrapping="Wrap" Text="结束时间:" VerticalAlignment="Top" Width="99" FontSize="{StaticResource SettingFontSize}" Margin="0,7,0,0"/>
+                <!--<local:TimePicker Value="{Binding EndTime}"/>--> 
+                <TextBox x:Name="endTime" Text="{Binding EndTime,Converter={StaticResource DateTimeToStringConverter},Mode=TwoWay}" ToolTipService.ToolTip="e.g. 15:30" Width="267.333" Margin="{StaticResource SettingItemMargin}" FontSize="16" />                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">               
+                <Button Content="取消" Click="SimulateCancleClicked" Width="111.333" FontSize="{StaticResource SettingFontSize}" FontWeight="Normal"  Margin="0,0,30,0" />
+                <Button Content="确定" Click="SimulateSaveClicked" Width="111.333" FontSize="{StaticResource SettingFontSize}" FontWeight="Normal"/>                
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
